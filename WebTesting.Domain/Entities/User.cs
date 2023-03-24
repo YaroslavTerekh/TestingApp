@@ -15,5 +15,7 @@ namespace WebTesting.Domain.Entities
         public string LastName { get; set; }
 
         public Role Role { get; set; }
+
+        public List<Test> Tests { get; set; } = new();
     }
 }

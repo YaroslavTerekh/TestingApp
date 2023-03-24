@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using WebTesting.BL.Services.Abstractions;
 using WebTesting.Domain.DataTransferObjects;
 using WebTesting.Domain.Entities;
+using WebTesting.Domain.Enums;
 
 namespace WebTesting.BL.Behaviors.Authorization.Register
 {
@@ -34,7 +35,8 @@ namespace WebTesting.BL.Behaviors.Authorization.Register
                 UserName = request.UserName,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                Email = request.Email
+                Email = request.Email,
+                Role = Role.SimpleUser
             };
 
             var result = await _userManager.CreateAsync(user, request.Password);
