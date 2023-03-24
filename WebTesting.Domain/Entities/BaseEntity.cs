@@ -11,5 +11,11 @@ namespace WebTesting.Domain.Entities
         public Guid Id { get; set; }
 
         public DateTime DateTime { get; set; }
+
+        public BaseEntity()
+        {
+            Id = Guid.NewGuid();
+            DateTime = DateTime.UtcNow;
+        }
     }
 }
