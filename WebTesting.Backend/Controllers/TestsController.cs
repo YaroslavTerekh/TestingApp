@@ -14,7 +14,7 @@ using WebTesting.Domain.Constants;
 
 namespace WebTesting.Backend.Controllers
 {
-    [Authorize]
+    [Authorize(Policy = Policies.Admin)]
     [Route("api/test")]
     [ApiController]
     public class TestsController : BaseController
@@ -26,16 +26,6 @@ namespace WebTesting.Backend.Controllers
             _mediatr = mediatr;
         }
 
-        [HttpPost("get/{id:guid}")]
-        public async Task<IActionResult> GetTestAsync(
-            [FromRoute] Guid id,
-            CancellationToken cancellationToken = default
-        )
-        {
-            return Ok(await _mediatr.Send(new GetTestQuery(CurrentUserId, id), cancellationToken));
-        }
-
-        [Authorize(Policy = Policies.Admin)]
         [HttpPost("create")]
         public async Task<IActionResult> CreateTestAsync(
             [FromBody] CreateTestCommand command,
@@ -47,7 +37,6 @@ namespace WebTesting.Backend.Controllers
             return Ok();
         }
 
-        [Authorize(Policy = Policies.Admin)]
         [HttpPut("modify")]
         public async Task<IActionResult> ModifyTestAsync(
             [FromBody] ModifyTestCommand command,
@@ -59,7 +48,6 @@ namespace WebTesting.Backend.Controllers
             return Ok();
         }
 
-        [Authorize(Policy = Policies.Admin)]
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteTestAsync(
             [FromRoute] Guid id,
@@ -71,7 +59,6 @@ namespace WebTesting.Backend.Controllers
             return Ok();
         }
 
-        [Authorize(Policy = Policies.Admin)]
         [HttpPost("create/question")]
         public async Task<IActionResult> CreateQuestionAsync(
             [FromBody] CreateQuestionCommand command,
@@ -83,7 +70,6 @@ namespace WebTesting.Backend.Controllers
             return Ok();
         }
 
-        [Authorize(Policy = Policies.Admin)]
         [HttpPut("modify/question")]
         public async Task<IActionResult> ModifyQuestionAsync(
             [FromBody] ModifyQuestionCommand command,
@@ -95,7 +81,6 @@ namespace WebTesting.Backend.Controllers
             return Ok();
         }
 
-        [Authorize(Policy = Policies.Admin)]
         [HttpDelete("question/{id:guid}")]
         public async Task<IActionResult> DeleteQuestionAsync(
             [FromRoute] Guid id,
