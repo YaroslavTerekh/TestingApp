@@ -106,6 +106,15 @@ builder.Services.AddAuthorization(options =>
     });
 });
 
+builder.Services.AddCors(opts =>
+{
+    opts.AddPolicy("AllowAll", builder => builder
+        .WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
+});
+
 var app = builder.Build();
 var scope = app.Services.CreateScope();
 
@@ -124,6 +133,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCors("AllowAll");
 
 app.MapControllers();
 
