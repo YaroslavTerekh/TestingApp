@@ -5,12 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using WebTesting.Backend.Extensions;
 using WebTesting.BL.Behaviors.Tests.CompleteTest;
 using WebTesting.BL.Behaviors.Tests.GetAllTests;
+using WebTesting.BL.Behaviors.Tests.GetMyTests;
 using WebTesting.BL.Behaviors.Tests.GetTest;
 using WebTesting.Domain.Constants;
 
 namespace WebTesting.Backend.Controllers;
 
-[Authorize]
+[Authorize(Policy = Policies.User)]
 [Route("api/testings")]
 [ApiController]
 public class TestingsController : BaseController
@@ -22,15 +23,14 @@ public class TestingsController : BaseController
         _mediatr = mediatr;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> GetAllTestsAsync(
+    [HttpGet("mine")]
+    public async Task<IActionResult> GetTestAsync(
         CancellationToken cancellationToken = default
     )
     {
-        return Ok(await _mediatr.Send(new GetAllTestsQuery(CurrentUserId), cancellationToken));
+        return Ok(await _mediatr.Send(new GetMyTestsQuery(CurrentUserId), cancellationToken));
     }
 
-    [Authorize(Policy = Policies.User)]
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetTestAsync(
         [FromRoute] Guid id,
@@ -40,7 +40,6 @@ public class TestingsController : BaseController
         return Ok(await _mediatr.Send(new GetTestQuery(CurrentUserId, id), cancellationToken));
     }
 
-    [Authorize(Policy = Policies.User)]
     [HttpPost("complete")]
     public async Task<IActionResult> CompleteTestAsync(
         [FromBody] CompleteTestCommand command,
