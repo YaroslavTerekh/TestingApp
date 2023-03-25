@@ -1,10 +1,16 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text;
+using WebTesting.Backend.Middleware;
+using WebTesting.BL.Behaviors;
 using WebTesting.BL.DbConnection;
 using WebTesting.BL.Services.Abstractions;
 using WebTesting.BL.Services.Realizations;
@@ -22,8 +28,12 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(AppDomain.CurrentDomain.GetAssemblies().Where(t => t.FullName.Contains("BL")).First()));
 
 builder.Services.AddTransient<IJWTService, JWTService>();
+builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>),
+                typeof(ValidationBehavior<,>));
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -109,6 +119,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCustomExceptionHandler();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
