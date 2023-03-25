@@ -7,6 +7,7 @@ using WebTesting.BL.Behaviors.Tests.CreateQuestion;
 using WebTesting.BL.Behaviors.Tests.CreateTest;
 using WebTesting.BL.Behaviors.Tests.DeleteQuestion;
 using WebTesting.BL.Behaviors.Tests.DeleteTest;
+using WebTesting.BL.Behaviors.Tests.GetAllTests;
 using WebTesting.BL.Behaviors.Tests.GetTest;
 using WebTesting.BL.Behaviors.Tests.ModifyQuestion;
 using WebTesting.BL.Behaviors.Tests.ModifyTest;
@@ -24,6 +25,14 @@ namespace WebTesting.Backend.Controllers
         public TestsController(IMediator mediatr)
         {
             _mediatr = mediatr;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllTestsAsync(
+            CancellationToken cancellationToken = default
+        )
+        {
+            return Ok(await _mediatr.Send(new GetAllTestsQuery(CurrentUserId), cancellationToken));
         }
 
         [HttpPost("create")]
@@ -73,7 +82,7 @@ namespace WebTesting.Backend.Controllers
         [HttpPut("modify/question")]
         public async Task<IActionResult> ModifyQuestionAsync(
             [FromBody] ModifyQuestionCommand command,
-            CancellationToken cancellationToken = default 
+            CancellationToken cancellationToken = default
         )
         {
             await _mediatr.Send(command, cancellationToken);
