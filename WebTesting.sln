@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTesting.Backend", "WebTesting.Backend\WebTesting.Backend.csproj", "{CF8DBD2A-4D1E-4D3B-A72E-7056F567294D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTesting.Backend", "WebTesting.Backend\WebTesting.Backend.csproj", "{CF8DBD2A-4D1E-4D3B-A72E-7056F567294D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTesting.BL", "WebTesting.BL\WebTesting.BL.csproj", "{2C8AFB32-00D5-4FCC-A455-EF07822D24BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTesting.BL", "WebTesting.BL\WebTesting.BL.csproj", "{2C8AFB32-00D5-4FCC-A455-EF07822D24BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTesting.Domain", "WebTesting.Domain\WebTesting.Domain.csproj", "{3F7B9D69-F89D-40A3-91AD-15EF07295A50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTesting.Domain", "WebTesting.Domain\WebTesting.Domain.csproj", "{3F7B9D69-F89D-40A3-91AD-15EF07295A50}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

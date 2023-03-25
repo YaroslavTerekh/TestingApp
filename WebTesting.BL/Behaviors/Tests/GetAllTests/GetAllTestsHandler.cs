@@ -25,7 +25,6 @@ public class GetAllTestsHandler : IRequestHandler<GetAllTestsQuery, List<TestDTO
     public async Task<List<TestDTO>> Handle(GetAllTestsQuery request, CancellationToken cancellationToken)
     {
         return await _context.Tests
-            .Where(t => t.Users.Select(t => t.Id).Contains(request.CurrentUserId))
             .Include(t => t.Users)
             .Include(t => t.Questions)
                 .ThenInclude(t => t.Options)
