@@ -1,0 +1,42 @@
+.actions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12vw;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        padding: 2vh;  
+        text-transform: uppercase;
+        color: #fff;
+        border-radius: 4px;
+        font-size: 2vh;
+        font-weight: bold;
+    }
+
+    .sign-in {
+        background-color: #217aa3;
+        border: 3px solid #134a6365;
+        transition: .2s;
+    }
+
+    .sign-in:hover {
+        background-color: #2583af;
+        border: 3px solid #2583af; 
+        transition: .2s;       
+    }
+
+    .sign-up {
+        background-color: #21a337;
+        border: 2px solid #1870275e;
+        transition: .2s;
+    }
+
+    .sign-up:hover {
+        background-color: #26b83e;
+        border: 2px solid #26b83e;
+        transition: .2s;
+    }
+}

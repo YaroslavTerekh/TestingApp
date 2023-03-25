@@ -1,0 +1,17 @@
+<div class="wrapper">
+    <img src="../../../../../assets/login.jpg" alt="">
+    <div class="form">
+        <h2>Sign <span>in</span></h2>
+        <form action="" [formGroup]="loginGroup" (submit)="login()">
+            <div class="login">
+                <p>Email</p>
+                <input type="email" placeholder="johndoe@example.com" formControlName="email">
+            </div>
+            <div class="password">
+                <p>Password</p>
+                <input type="password" placeholder="Your password..." formControlName="password">
+            </div>
+            <input type="submit" class="submit" value="login">
+        </form>
+    </div>
+</div>
