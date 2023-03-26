@@ -5,5 +5,5 @@
         <input type="checkbox" (change)="checked = !checked">
         <p>Agree to start? </p>
     </div>
-    <button [ngStyle]="!checked ? {'opacity': '.5'} : {}" [ngClass]="!checked ? 'ng-disabled' : ''" [routerLink]="['/completing', test.id]">Start</button>
+    <button [ngStyle]="!checked ? {'opacity': '.5'} : {}" [ngClass]="!checked ? 'ng-disabled' : ''" [routerLink]="['/completing', test.id]">Proceed</button>
 </div>
