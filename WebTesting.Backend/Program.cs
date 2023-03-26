@@ -116,11 +116,11 @@ builder.Services.AddCors(opts =>
 });
 
 var app = builder.Build();
-AppDbInitializer.Seed(app, builder.Configuration);
 var scope = app.Services.CreateScope();
 
 var db = scope.ServiceProvider.GetRequiredService<DataContext>();
 db.Database.Migrate();
+AppDbInitializer.Seed(app, builder.Configuration);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
