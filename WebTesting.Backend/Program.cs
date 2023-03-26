@@ -12,6 +12,7 @@ using System.Text;
 using WebTesting.Backend.Middleware;
 using WebTesting.BL.Behaviors;
 using WebTesting.BL.DbConnection;
+using WebTesting.BL.Seed;
 using WebTesting.BL.Services.Abstractions;
 using WebTesting.BL.Services.Realizations;
 using WebTesting.Domain;
@@ -115,6 +116,7 @@ builder.Services.AddCors(opts =>
 });
 
 var app = builder.Build();
+AppDbInitializer.Seed(app, builder.Configuration);
 var scope = app.Services.CreateScope();
 
 var db = scope.ServiceProvider.GetRequiredService<DataContext>();
