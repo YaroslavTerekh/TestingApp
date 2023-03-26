@@ -16,6 +16,7 @@ namespace WebTesting.BL.Mapper
             CreateMap<Test, TestDTO>();
             CreateMap<Question, QuestionDTO>();
             CreateMap<Option, OptionDTO>().ReverseMap();
+            CreateMap<User, UserDTO>().ReverseMap();
         }
     }
 }

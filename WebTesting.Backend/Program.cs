@@ -109,10 +109,9 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddCors(opts =>
 {
     opts.AddPolicy("AllowAll", builder => builder
-        .WithOrigins("http://localhost:4200")
+        .AllowAnyOrigin()
         .AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials());
+        .AllowAnyHeader());
 });
 
 var app = builder.Build();

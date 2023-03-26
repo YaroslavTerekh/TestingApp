@@ -5,13 +5,16 @@
         <form action="" [formGroup]="loginGroup" (submit)="login()">
             <div class="login">
                 <p>Email</p>
-                <input type="email" placeholder="johndoe@example.com" formControlName="email">
+                <input [ngClass]="email.touched && !email.valid ? 'ng-input-invalid' : ''" type="email" placeholder="johndoe@example.com" formControlName="email">
             </div>
             <div class="password">
                 <p>Password</p>
-                <input type="password" placeholder="Your password..." formControlName="password">
+                <input [ngClass]="password.touched && !password.valid ? 'ng-input-invalid' : ''" type="password" placeholder="Your password..." formControlName="password">
             </div>
-            <input type="submit" class="submit" value="login">
+            <input [disabled]="!loginGroup.touched || !loginGroup.valid" [ngClass]="subm.disabled ? 'ng-disabled' : ''" type="submit" class="submit" value="login" #subm>
         </form>
+        <ul class="errors">
+            <li *ngFor="let error of errors">{{error}}</li>
+        </ul>
     </div>
 </div>

@@ -101,3 +101,31 @@ label {
 legend {
 	display: block;
 }
+
+.ng-input-invalid {
+    border: 1px solid #a32c2c;
+    background-color: #f000005e !important;
+}
+
+.ng-disabled {
+    cursor: not-allowed !important;
+}
+
+.errors {
+    color: #be4d4d;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: .2vw;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: #ffffff63;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(0, 255, 55);
+  }

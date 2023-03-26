@@ -1,0 +1,41 @@
+.wrapper {
+    max-width: 60vw;
+    min-height: 100%;
+    padding: 2vw;
+    margin: 0 auto;
+    background-color: #b4b4b4;
+    color: #fff;
+
+    h2 {
+        font-weight: bolder;
+        font-size: 3.5vh;
+        color: #1b2644;
+        text-align: center;
+
+        span {
+            font-weight: 300;
+            color: #1641b8;
+        }
+    }
+
+    .submit {
+        padding: 1vh;
+        width: 100%;
+        background-color: #4a97b6;
+    }
+
+    .test {
+        padding: 2vw;
+        background-color: #808080;
+        border-radius: 4px;
+        margin-top: 1vh;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            font-size: 2.5vh;
+        }
+    }
+}

@@ -51,7 +51,7 @@ public class CompleteTestHandler : IRequestHandler<CompleteTestCommand, ResultDT
         {
             var testQuestion = test.Questions.FirstOrDefault(t => t.Id == answer.QuestionId);
 
-            if(answer.OptionId == testQuestion.Options.Where(t => t.IsRight == true).Select(t => t.Id).FirstOrDefault())
+            if(testQuestion.Options.Where(t => t.IsRight == true).Select(t => t.Id).Contains(answer.OptionId))
             {
                 point++;
             }
