@@ -1,0 +1,32 @@
+<div class="wrapper">
+    <img src="../../../../../assets/register.jpg" alt="">
+    <div class="form">
+        <h2>Sign <span>up</span></h2>
+        <form action="" [formGroup]="registerGroup" (submit)="register()">
+            <div class="username">
+                <p>Username</p>
+                <input [ngClass]="userName.touched && !userName.valid ? 'ng-input-invalid' : ''" type="email" placeholder="johndoe@example.com" formControlName="userName">
+            </div>
+            <div class="firstname">
+                <p>First name</p>
+                <input [ngClass]="firstName.touched && !firstName.valid ? 'ng-input-invalid' : ''" type="text" placeholder="John" formControlName="firstName">
+            </div>
+            <div class="lastname">
+                <p>Last name</p>
+                <input [ngClass]="lastName.touched && !lastName.valid ? 'ng-input-invalid' : ''" type="text" placeholder="Doe" formControlName="lastName">
+            </div>
+            <div class="email">
+                <p>Email</p>
+                <input [ngClass]="email.touched && !email.valid ? 'ng-input-invalid' : ''" type="email" placeholder="johndoe@example.com" formControlName="email">
+            </div>
+            <div class="password">
+                <p>Password</p>
+                <input [ngClass]="password.touched && !password.valid ? 'ng-input-invalid' : ''" type="password" placeholder="Your password..." formControlName="password">
+            </div>
+            <input [disabled]="!registerGroup.touched || !registerGroup.valid" [ngClass]="subm.disabled ? 'ng-disabled' : ''" type="submit" class="submit" value="register" #subm>
+        </form>
+        <ul class="errors">
+            <li *ngFor="let error of errors">{{error}}</li>
+        </ul>
+    </div>
+</div>

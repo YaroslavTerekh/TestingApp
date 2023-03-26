@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <form action="" class="question" [formGroup]="createQuestionGroup" (submit)="addQuestion()">
+        <div class="text">
+            <p>Question</p>
+            <textarea name="" id="" cols="30" rows="10" formControlName="question"></textarea>
+        </div>
+        <form class="options" [formGroup]="optionGroup">
+            <p>Options</p>
+            <div class="option" *ngFor="let model of models; let i = index">
+                <input type="text" [formControlName]="'text' + i">
+                <input type="checkbox" [formControlName]="'isRight' + i">
+            </div>
+            <div class="actions">
+                <div class="add-new" (click)="createModel(null)">
+                    +
+                </div>
+                <div class="remove" (click)="removeModel()">
+                    -
+                </div>
+            </div>
+        </form>
+        <input type="submit" value="Save question" class="submit">
+    </form>
+</div>

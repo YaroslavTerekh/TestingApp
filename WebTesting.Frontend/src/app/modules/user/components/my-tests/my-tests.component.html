@@ -1,0 +1,6 @@
+<div class="wrapper">
+    <h2>Your <span>testings</span></h2>
+    <div class="test" *ngFor="let test of allTests" [routerLink]="['/complete-test', test.id]">
+        <p>{{test.title}}</p>
+    </div>
+</div>

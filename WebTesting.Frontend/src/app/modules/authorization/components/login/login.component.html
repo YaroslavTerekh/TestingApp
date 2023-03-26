@@ -1,0 +1,20 @@
+<div class="wrapper">
+    <img src="../../../../../assets/login.jpg" alt="">
+    <div class="form">
+        <h2>Sign <span>in</span></h2>
+        <form action="" [formGroup]="loginGroup" (submit)="login()">
+            <div class="login">
+                <p>Email</p>
+                <input [ngClass]="email.touched && !email.valid ? 'ng-input-invalid' : ''" type="email" placeholder="johndoe@example.com" formControlName="email">
+            </div>
+            <div class="password">
+                <p>Password</p>
+                <input [ngClass]="password.touched && !password.valid ? 'ng-input-invalid' : ''" type="password" placeholder="Your password..." formControlName="password">
+            </div>
+            <input [disabled]="!loginGroup.touched || !loginGroup.valid" [ngClass]="subm.disabled ? 'ng-disabled' : ''" type="submit" class="submit" value="login" #subm>
+        </form>
+        <ul class="errors">
+            <li *ngFor="let error of errors">{{error}}</li>
+        </ul>
+    </div>
+</div>
