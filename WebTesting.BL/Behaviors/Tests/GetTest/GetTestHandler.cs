@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebTesting.BL.DbConnection;
 using WebTesting.Domain.DataTransferObjects;
+using WebTesting.Domain.Enums;
 
 namespace WebTesting.BL.Behaviors.Tests.GetTest
 {
@@ -35,7 +36,8 @@ namespace WebTesting.BL.Behaviors.Tests.GetTest
                 throw new Exception("Test not found");
             }
 
-            if(!test.Users.Select(t => t.Id).ToList().Contains(request.CurrentUserId))
+            if(await _context.Users.Where(t => t.Id == request.CurrentUserId).Select(t => t.Role).FirstOrDefaultAsync(cancellationToken) != Role.Admin &&
+                !test.Users.Select(t => t.Id).ToList().Contains(request.CurrentUserId))
             {
                 throw new Exception("You can pass only your tests");
             }

@@ -8,6 +8,7 @@ using WebTesting.BL.Behaviors.Tests.CreateTest;
 using WebTesting.BL.Behaviors.Tests.DeleteQuestion;
 using WebTesting.BL.Behaviors.Tests.DeleteTest;
 using WebTesting.BL.Behaviors.Tests.GetAllTests;
+using WebTesting.BL.Behaviors.Tests.GetAllUsers;
 using WebTesting.BL.Behaviors.Tests.GetTest;
 using WebTesting.BL.Behaviors.Tests.ModifyQuestion;
 using WebTesting.BL.Behaviors.Tests.ModifyTest;
@@ -25,6 +26,14 @@ namespace WebTesting.Backend.Controllers
         public TestsController(IMediator mediatr)
         {
             _mediatr = mediatr;
+        }
+
+        [HttpGet("all-users")]
+        public async Task<IActionResult> GetAllUsersAsync(
+            CancellationToken cancellationToken = default
+        )
+        {
+            return Ok(await _mediatr.Send(new GetAllUsersQuery(), cancellationToken));
         }
 
         [HttpGet]

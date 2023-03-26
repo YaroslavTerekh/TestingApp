@@ -1,0 +1,53 @@
+<div class="main">
+    <form action="" class="add-new-test" [formGroup]="createTestGroup" (submit)="modifyTest()">
+        <div class="title">
+            <p>Title</p>
+            <input [ngClass]="title.touched && !title.valid ? 'ng-input-invalid' : ''" type="text"
+                formControlName="title">
+        </div>
+        <div class="description">
+            <p>Description</p>
+            <textarea [ngClass]="description.touched && !description.valid ? 'ng-input-invalid' : ''" name="" id=""
+                cols="30" rows="10" formControlName="description"></textarea>
+        </div>
+        <div class="users">
+            <p>Users</p>
+            <div class="names">
+                <div class="name" *ngFor="let user of displayUsers" (click)="remove(user.id)">
+                    <p>{{user.firstName}} {{user.lastName}}</p>
+                </div>
+            </div>
+            <div class="all-users">
+                <div class="user" *ngFor="let user of users" (click)="addUser(user)">
+                    {{user.firstName}} {{user.lastName}}
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="MODIFY TEST" class="submit" #subm>
+    </form>
+    <form action="" class="question" [formGroup]="createQuestionGroup" (submit)="addQuestion()">
+        <div class="text">
+            <p>Question</p>
+            <textarea name="" id="" cols="30" rows="10" formControlName="question"></textarea>
+        </div>
+        <form class="options" [formGroup]="optionGroup">
+            <div class="option" *ngFor="let model of models; let i = index">
+                <input type="text" [formControlName]="'text' + i">
+                <input type="checkbox" [formControlName]="'isRight' + i">
+            </div>
+            <div class="actions">
+                <div class="add-new" (click)="createModel()">
+                    +
+                </div>
+                <div class="remove" (click)="removeModel()">
+                    -
+                </div>
+            </div>
+        </form>
+        <input type="submit" value="Add question" class="submit">
+    </form>
+    <div class="question-list" *ngFor="let question of questions" [routerLink]="['/question', question.id]" (click)="emitQuestion(question)">
+        <p>{{question.questionDescription}}</p>
+        <button (click)="deleteQuestion($event, question.id)">delete</button>
+    </div>
+</div>

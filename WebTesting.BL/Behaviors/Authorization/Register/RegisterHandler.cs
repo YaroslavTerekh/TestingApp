@@ -58,7 +58,7 @@ namespace WebTesting.BL.Behaviors.Authorization.Register
                 }
             }
 
-            throw new Exception(result.Errors.ToArray().ToString());
+            throw new Exception(result.Errors.ToArray()[0].Description.ToString());
         }
     }
 }

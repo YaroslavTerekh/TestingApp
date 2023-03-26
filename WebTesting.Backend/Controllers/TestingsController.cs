@@ -11,7 +11,7 @@ using WebTesting.Domain.Constants;
 
 namespace WebTesting.Backend.Controllers;
 
-[Authorize(Policy = Policies.User)]
+[Authorize]
 [Route("api/testings")]
 [ApiController]
 public class TestingsController : BaseController

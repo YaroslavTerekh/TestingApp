@@ -11,7 +11,7 @@ public class CreateTestCommandValidator : AbstractValidator<CreateTestCommand>
         RuleFor(t => t.Title)
             .MinimumLength(4)
             .WithMessage(ErrorMessages.TestTitleTooShort)
-            .MaximumLength(4)
+            .MaximumLength(30)
             .WithMessage(ErrorMessages.TestTitleTooLong);
 
         RuleFor(t => t.Description)

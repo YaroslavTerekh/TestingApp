@@ -15,5 +15,7 @@ namespace WebTesting.Domain.DataTransferObjects
         public string Description { get; set; }
 
         public List<QuestionDTO> Questions { get; set; } = new();
+
+        public List<UserDTO> Users { get; set; }
     }
 }

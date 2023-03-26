@@ -1,0 +1,30 @@
+<div class="main">
+    <form action="" class="add-new-test" [formGroup]="createTestGroup" (submit)="createTest()">
+        <div class="title">
+            <p>Title</p>
+            <input [ngClass]="title.touched && !title.valid ? 'ng-input-invalid' : ''" type="text" formControlName="title">
+        </div>
+        <div class="description">
+            <p>Description</p>
+            <textarea [ngClass]="description.touched && !description.valid ? 'ng-input-invalid' : ''" name="" id="" cols="30" rows="10" formControlName="description"></textarea>
+        </div>
+        <div class="users">
+            <p>Users</p>
+            <div class="names">
+                <div class="name" *ngFor="let user of displayUsers" (click)="remove(user.id)">
+                    <p>{{user.firstName}} {{user.lastName}}</p>
+                </div>
+            </div>
+            <div class="all-users">
+                <div class="user" *ngFor="let user of users" (click)="addUser(user)">
+                    {{user.firstName}} {{user.lastName}}
+                </div>
+            </div>
+        </div>
+        <input [disabled]="!createTestGroup.touched || !createTestGroup.valid" [ngClass]="subm.disabled ? 'ng-disabled' : ''" type="submit" value="ADD NEW TEST" class="submit" #subm>
+    </form>
+    <div class="test" *ngFor="let test of allTests" [routerLink]="['/admin-test', test.id]">
+        <p>{{test.title}}</p>
+        <button (click)="deleteTest($event, test.id)">Delete</button>
+    </div>
+</div>

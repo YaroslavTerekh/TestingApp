@@ -1,0 +1,23 @@
+.result {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    p {
+        font-size: 3vh;
+    }
+
+    h2 {
+        font-size: 4vh;
+        text-align: center;
+    }
+
+    button {
+        margin-top: 1vh;
+        padding: 1vh;
+        color: #fff;
+        font-weight: 400;
+        background-color: #305e99;
+    }
+}

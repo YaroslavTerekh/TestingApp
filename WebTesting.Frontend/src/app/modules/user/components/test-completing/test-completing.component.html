@@ -1,0 +1,10 @@
+<div class="wrapper">
+    <h1>Question {{index + 1}}: {{currentQuestion.questionDescription}}</h1>
+    <div class="options">
+        <label *ngFor="let option of currentQuestion.options">
+            <input type="radio" [name]="currentQuestion.id" [value]="option.id"
+                [(ngModel)]="selectedOptionId">{{option.answer}}</label>
+    </div>
+    <button *ngIf="index <= questions.length - 2" (click)="next()">Next</button>
+    <button *ngIf="index >= questions.length - 1" (click)="finish()">Finish</button>
+</div>
